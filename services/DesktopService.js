@@ -1,0 +1,24 @@
+const os = require('os');
+
+class DesktopService {
+
+    getNetworkInterfaces() {
+        const networkInterfaces = os.networkInterfaces();
+
+        const ethnt = networkInterfaces.Ethernet;
+
+        const mac = [... new Set(ethnt.map(item => item.mac))];
+        const ip = [... new Set(ethnt.filter(item => item.family === "IPv4").map(item => item.address))];
+
+        const macWithoutColon = mac[0].replaceAll(':', '').toUpperCase();
+
+        return {
+            macCliente: macWithoutColon,
+            ipCliente: ip[0],
+            hostnameCliente: os.hostname()
+        };
+    }
+
+}
+
+module.exports = DesktopService;

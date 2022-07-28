@@ -1,0 +1,44 @@
+{
+  "name": "desktopauthorization",
+  "version": "1.0.0",
+  "description": "Validación de pc para proceso de logueo estricto",
+  "main": "index.js",
+  "scripts": {
+    "dev": "set DEBUG=app:*  && nodemon index.js",
+    "start": "set NODE_ENV=production && node index"
+  },
+  "keywords": [
+    "js",
+    "nodejs",
+    "express"
+  ],
+  "author": "David Gómez",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/eslint-parser": "7.18.9",
+    "dotenv": "16.0.1",
+    "eslint": "8.20.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "husky": "8.0.1",
+    "lint-staged": "13.0.3",
+    "nodemon": "2.0.19",
+    "prettier": "2.7.1"
+  },
+  "dependencies": {
+    "@hapi/boom": "10.0.0",
+    "@hapi/joi": "17.1.1",
+    "body-parser": "1.20.0",
+    "cors": "2.8.5",
+    "express": "4.18.1",
+    "morgan": "1.10.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
+  }
+}
