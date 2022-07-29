@@ -3,20 +3,32 @@ const os = require('os');
 class DesktopService {
 
     getNetworkInterfaces() {
-        const networkInterfaces = os.networkInterfaces();
+        
+        try {
+            const networkInterfaces = os.networkInterfaces();
 
-        const ethnt = networkInterfaces.Ethernet;
+            const ethnt = networkInterfaces.Ethernet;
 
-        const mac = [... new Set(ethnt.map(item => item.mac))];
-        const ip = [... new Set(ethnt.filter(item => item.family === "IPv4").map(item => item.address))];
+            const mac = [... new Set(ethnt.map(item => item.mac))];
+            const ip = [... new Set(ethnt.filter(item => item.family === "IPv4").map(item => item.address))];
 
-        const macWithoutColon = mac[0].replaceAll(':', '').toUpperCase();
+            //console.log(mac[0].replaceAll(':', ''));
 
-        return {
-            macCliente: macWithoutColon,
-            ipCliente: ip[0],
-            hostnameCliente: os.hostname()
-        };
+            //const macWithoutColon = mac[0].replaceAll(':', '').toUpperCase();
+
+
+            const response = {
+                macCliente: mac[0].toUpperCase().replace(/:/g, ''),
+                ipCliente: ip[0],
+                hostnameCliente: os.hostname()
+            };
+
+            return response;
+
+        } catch (error) {
+            console.log(error);
+        }
+
     }
 
 }

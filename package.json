@@ -40,5 +40,15 @@
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix"
+  },
+  "pkg": {
+    "scripts": [
+      "build/**/*.js"
+    ],
+    "assets": "views/**/*",
+    "targets": [
+      "node14-win-x64"
+    ],
+    "outputPath": "dist"
   }
 }

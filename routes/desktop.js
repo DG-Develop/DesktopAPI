@@ -14,7 +14,13 @@ const desktopApi = (app) => {
             
             res.status(200).json(networkInterfaces);
         } catch (error) {
-            next(error);
+            console.log(error);
+            // next(error);
+            res.status(500).json({
+                message: "Error getting network interfaces",
+                description: error.message,
+                error: error,            
+            });
         }
     });
 }
