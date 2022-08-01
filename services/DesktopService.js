@@ -12,13 +12,10 @@ class DesktopService {
             const mac = [... new Set(ethnt.map(item => item.mac))];
             const ip = [... new Set(ethnt.filter(item => item.family === "IPv4").map(item => item.address))];
 
-            //console.log(mac[0].replaceAll(':', ''));
-
-            //const macWithoutColon = mac[0].replaceAll(':', '').toUpperCase();
-
+            const macWithoutColon = mac[0].toUpperCase().replace(/:/g, '');
 
             const response = {
-                macCliente: mac[0].toUpperCase().replace(/:/g, ''),
+                macCliente: macWithoutColon,
                 ipCliente: ip[0],
                 hostnameCliente: os.hostname()
             };
