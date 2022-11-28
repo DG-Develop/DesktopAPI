@@ -4,6 +4,7 @@
   "description": "Validación de pc para proceso de logueo estricto",
   "main": "index.js",
   "scripts": {
+    "prod": "pkg ./index.js -t node16-win-x64",
     "dev": "set DEBUG=app:*  && nodemon index.js",
     "start": "set NODE_ENV=production && node index"
   },
@@ -47,7 +48,7 @@
     ],
     "assets": "views/**/*",
     "targets": [
-      "node14-win-x64"
+      "node16-win-x64"
     ],
     "outputPath": "dist"
   }
