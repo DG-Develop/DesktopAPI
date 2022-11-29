@@ -1,5 +1,18 @@
 const os = require('os');
 
+
+/**
+ * Pruebas ✔
+ * Ethernet 1 ✔
+ * Ethernet ✔
+ * LAN ✔
+ * LAN 1 ✔
+ * Loop inteface Ethernet 1 ✖
+ * WLAN ✖
+ * Ethernet1 ✔
+ * LAN0 ✔
+
+ */
 class DesktopService {
 
     /**
@@ -10,7 +23,7 @@ class DesktopService {
         
         try {
             const networkInterfaces = os.networkInterfaces();
-            const regexInterfaces = new RegExp(/^(Ethernet|LAN)([\s][0-9])?/)
+            const regexInterfaces = new RegExp(/^(Ethernet|LAN)[\s]?[0-9]?/)
 
             const interfaces = Object.keys(networkInterfaces).filter(inter => regexInterfaces.test(inter))
 
