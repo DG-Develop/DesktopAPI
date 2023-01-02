@@ -1,6 +1,7 @@
 const express = require('express');
 const boom = require('@hapi/boom');
 const DesktopService = require('../services/DesktopService');
+const IP = require('ip');
 
 const desktopApi = (app) => {
     const router = express.Router();
@@ -10,7 +11,9 @@ const desktopApi = (app) => {
 
     router.get('/network-interfaces', (req, res) => {
         try {
-            const networkInterfaces =  desktopService.getNetworkInterfaces();
+            const ipAddress = IP.address();
+            
+            const networkInterfaces =  desktopService.getNetworkInterfaces(ipAddress);
             
             res.status(200).json(networkInterfaces);
         } catch (error) {

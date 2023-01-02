@@ -19,7 +19,7 @@ class DesktopService {
      * Método que obtiene la información de la MAC, IP y hostname del cliente
      * @returns response con información de la máquina cliente
      */
-    getNetworkInterfaces() {
+    getNetworkInterfaces(ipAddress) {
         
         try {
             const networkInterfaces = os.networkInterfaces();
@@ -30,7 +30,7 @@ class DesktopService {
             // * Obtengo una lista de los datos de Ethernet o LAN y filtro que tengan el atributo family y address
             // * y también verifico que la familia sea IPv4
             const ethntOrLan = interfaces.map(inter => {
-                const interFound = networkInterfaces[inter].filter(item => item.family && item.address && item.family === "IPv4")[0]
+                const interFound = networkInterfaces[inter].filter(item => item.family && item.address && item.family === "IPv4" && item.address === ipAddress)[0]
                 return interFound
             })
             
