@@ -24,6 +24,8 @@ class DesktopService {
         try {
             const networkInterfaces = os.networkInterfaces();
             const regexInterfaces = new RegExp(/^(Ethernet|LAN)[\s]?[0-9]?/)
+            console.log(ipAddress)
+            console.log(networkInterfaces)
 
             const interfaces = Object.keys(networkInterfaces).filter(inter => regexInterfaces.test(inter))
 

@@ -1,5 +1,4 @@
 const express = require('express');
-const boom = require('@hapi/boom');
 const DesktopService = require('../services/DesktopService');
 const IP = require('ip');
 
